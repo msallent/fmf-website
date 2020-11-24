@@ -13,9 +13,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
-    title: 'Gatsby Skeleton',
-    description: 'Gatsby starter featuring TypeScript, ESLint, Prettier and more...',
-    keywords: ['gatsby', 'starter', 'typescript', 'eslint', 'prettier', 'layout', 'seo'],
+    title: 'FMF Creative Audio',
+    description: 'Federico Mariano Franco - Creative Audio Producer',
+    keywords: ['federico', 'mariano', 'franco', 'creative', 'audio', 'producer'],
     imageURI: '/social.jpg',
     siteUrl: 'https://gatsby-starter-skeleton.netlify.app',
   },
