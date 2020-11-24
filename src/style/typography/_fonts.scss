@@ -1,23 +1,27 @@
 @font-face {
   font-family: 'Biennale';
   font-weight: normal;
+  font-display: swap;
   src: url('/fonts/Biennale-Light.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Biennale';
   font-weight: bold;
+  font-display: swap;
   src: url('/fonts/Biennale-Heavy.woff') format('woff');
 }
 
 @font-face {
   font-family: 'TTHoves';
   font-weight: normal;
+  font-display: swap;
   src: url('/fonts/TTHoves-Thin.woff') format('woff');
 }
 
 @font-face {
   font-family: 'TTHoves';
   font-weight: bold;
+  font-display: swap;
   src: url('/fonts/TTHoves-Medium.woff') format('woff');
 }
