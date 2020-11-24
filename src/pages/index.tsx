@@ -8,7 +8,7 @@ const Index: FunctionComponent<PageProps> = () => (
     <PageTitle title="Creative Audio Producer" />
     <div className="container">
       <p className={styles.paragraph}>I make original sound and music for commercial use.</p>
-      <img src="https://via.placeholder.com/1000x450" alt="Placeholder" width="1000" height="450" />
+      <img src="https://via.placeholder.com/2000x900" alt="Placeholder" width="1000" height="450" />
     </div>
   </main>
 );
