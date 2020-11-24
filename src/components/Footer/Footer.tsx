@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { socials } from '../../data/social';
+import { socials } from '../../data/socials';
 import styles from './Footer.module.scss';
 
 interface FooterProps {
