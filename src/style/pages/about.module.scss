@@ -1,0 +1,37 @@
+.paragraph {
+  padding: 0 2rem;
+
+  a {
+    display: inline-block;
+  }
+}
+
+.list {
+  padding: 0 2rem;
+}
+
+.listItem {
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &::before {
+    content: '+ ';
+  }
+}
+
+.greetings {
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 8rem;
+
+  &::after {
+    content: '';
+    width: 8rem;
+    height: 0.2rem;
+    background-color: red;
+    position: absolute;
+    left: 2rem;
+    bottom: -2rem;
+  }
+}
