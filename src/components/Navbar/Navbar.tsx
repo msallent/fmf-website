@@ -18,9 +18,26 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
   setIsTransitioning,
 }) => {
   const [activeLinkURL, setActiveLinkURL] = useState('');
+  const [isSubListOpen, setIsSubListOpen] = useState(false);
+
   const navbarRef = useRef<HTMLElement>(null);
+  const subListRef = useRef<HTMLUListElement>(null);
 
   const { width: windowInnerWidth } = useWindowSize();
+
+  const toggleSubListState = () => {
+    setIsSubListOpen(!isSubListOpen);
+  };
+
+  const subListItemHoverHandler = (event: React.MouseEvent) => {
+    if (windowInnerWidth && windowInnerWidth < 1024) return;
+
+    if (event.type === 'mouseenter') {
+      setIsSubListOpen(true);
+    } else {
+      setIsSubListOpen(false);
+    }
+  };
 
   useEffect(() => {
     const currentLink = navbarLinks.find((link) => currentLocation.pathname.includes(link.href));
@@ -41,7 +58,10 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
       marginTop: isOpen ? '2rem' : 0,
       duration: isOpen ? 0.5 : 0.35,
       onStart: () => setIsTransitioning(true),
-      onComplete: () => setIsTransitioning(false),
+      onComplete: () => {
+        setIsTransitioning(false);
+        setIsSubListOpen(false);
+      },
     });
 
     gsap.fromTo(
@@ -59,17 +79,58 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
     );
   }, [isOpen, setIsTransitioning, windowInnerWidth]);
 
+  useEffect(() => {
+    if (!subListRef.current) return;
+
+    gsap.to(subListRef.current, {
+      height: isSubListOpen ? 'auto' : 0,
+      marginBottom: isSubListOpen ? '1rem' : 0,
+      autoAlpha: isSubListOpen ? 1 : 0,
+      duration: 0.35,
+    });
+  }, [isSubListOpen]);
+
   return (
     <nav className={styles.navbar} ref={navbarRef}>
-      {navbarLinks.map((item) => (
-        <Link
-          key={item.title}
-          className={classNames(styles.navbarItem, item.href === activeLinkURL && styles.active)}
-          to={item.href}
-        >
-          {item.title}
-        </Link>
-      ))}
+      {navbarLinks.map((item) => {
+        return item.subLinks ? (
+          <div
+            key={item.title}
+            className={styles.navbarItemWrapper}
+            onMouseEnter={subListItemHoverHandler}
+            onMouseLeave={subListItemHoverHandler}
+          >
+            <button
+              className={item.href === activeLinkURL ? styles.active : ''}
+              onClick={toggleSubListState}
+              type="button"
+            >
+              {item.title}
+            </button>
+            <ul className={styles.subList} ref={subListRef}>
+              {item.subLinks.map((subLink) => (
+                <li key={subLink.title} className={styles.subLinkItem}>
+                  <Link
+                    className={styles.navbarItem}
+                    to={`${item.href}${subLink.href}`}
+                    onClick={() => setIsSubListOpen(false)}
+                  >
+                    {subLink.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <Link
+            key={item.title}
+            className={classNames(styles.navbarItem, item.href === activeLinkURL && styles.active)}
+            to={item.href}
+          >
+            {item.title}
+          </Link>
+        );
+      })}
     </nav>
   );
 };
