@@ -22,7 +22,7 @@ const About: FunctionComponent<PageProps> = () => (
       </ul>
       <p className={styles.paragraph}>
         Check out some of my music in the{' '}
-        <Link to="/albums" className={styles.underlined}>
+        <Link to="/albums/world-music-album" className={styles.underlined}>
           Albums
         </Link>{' '}
         section and don&apos;t hesitate to contact me.
