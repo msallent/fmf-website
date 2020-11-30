@@ -1,0 +1,47 @@
+.navbar {
+  height: 0;
+  overflow: hidden;
+}
+
+.navbarItem {
+  font-size: 1.3rem;
+  font-family: 'Biennale', sans-serif;
+  letter-spacing: 1px;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &::before {
+    content: '» ';
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    height: auto;
+    display: flex;
+  }
+
+  .navbarItem {
+    font-weight: bold;
+    color: #777;
+
+    &.active {
+      color: #000;
+    }
+
+    &:not(:last-child) {
+      margin-right: 5rem;
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: '';
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
