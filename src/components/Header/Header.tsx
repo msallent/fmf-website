@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Link } from 'gatsby';
 import classNames from 'classnames';
-import { navbarLinks } from '../../data/navbarLinks';
 import styles from './Header.module.scss';
+import { Navbar } from '../Navbar';
 
 interface HeaderProps {
   title: string;
@@ -10,29 +10,37 @@ interface HeaderProps {
 }
 
 export const Header: FunctionComponent<HeaderProps> = ({ title, currentLocation }) => {
-  const [activeLinkURL, setActiveLinkURL] = useState('');
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const toggleNavbarState = () => {
+    if (isTransitioning) return;
+    setIsNavbarOpen(!isNavbarOpen);
+  };
 
   useEffect(() => {
-    const currentLink = navbarLinks.find((link) => currentLocation.pathname.includes(link.href));
-    setActiveLinkURL(currentLink?.href || '');
+    setIsNavbarOpen(false);
+    setIsTransitioning(false);
   }, [currentLocation]);
 
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.title}>
-        {title}
-      </Link>
-      <nav className={styles.navbar}>
-        {navbarLinks.map((item) => (
-          <Link
-            key={item.title}
-            className={classNames(styles.navbarItem, item.href === activeLinkURL && styles.active)}
-            to={item.href}
-          >
-            {item.title}
-          </Link>
-        ))}
-      </nav>
+      <div className={styles.headerRow}>
+        <Link to="/" className={styles.title}>
+          {title}
+        </Link>
+        <button
+          className={classNames(styles.navbarToggle, isNavbarOpen && styles.isOpen)}
+          type="button"
+          aria-label="Toggle Navbar"
+          onClick={toggleNavbarState}
+        />
+      </div>
+      <Navbar
+        isOpen={isNavbarOpen}
+        currentLocation={currentLocation}
+        setIsTransitioning={setIsTransitioning}
+      />
     </header>
   );
 };
