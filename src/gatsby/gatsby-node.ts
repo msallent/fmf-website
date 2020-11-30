@@ -10,7 +10,6 @@ export const createPages: GatsbyNode['createPages'] = ({ actions: { createRedire
   createRedirect({
     fromPath: '/',
     toPath: '/albums/world-music-album',
-    redirectInBrowser: true,
     isPermanent: true,
   });
 };
