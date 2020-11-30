@@ -41,6 +41,7 @@ const gatsbyConfig: GatsbyConfig = {
       },
     },
     'gatsby-transformer-sharp',
+    'gatsby-plugin-netlify',
   ],
 };
 
