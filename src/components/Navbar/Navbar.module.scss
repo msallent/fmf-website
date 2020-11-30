@@ -101,6 +101,9 @@
 
     .navbarItem {
       font-family: 'TTHoves Medium', sans-serif;
+      font-weight: normal;
+      text-transform: none;
+      letter-spacing: 2px;
 
       &::before {
         content: '+ ';
