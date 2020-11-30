@@ -21,10 +21,15 @@ const About: FunctionComponent<PageProps> = () => (
         </li>
       </ul>
       <p className={styles.paragraph}>
-        Check out some of my music in the <Link to="/albums">&quot;Albums&quot;</Link> section and
-        don&apos;t hesitate to contact me.
+        Check out some of my music in the{' '}
+        <Link to="/albums" className={styles.underlined}>
+          Albums
+        </Link>{' '}
+        section and don&apos;t hesitate to contact me.
       </p>
-      <p className={classNames(styles.paragraph, styles.greetings)}>Say hi!</p>
+      <p className={classNames(styles.paragraph, styles.greetings)}>
+        <strong>Say hi!</strong>
+      </p>
     </div>
   </main>
 );

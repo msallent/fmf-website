@@ -21,7 +21,6 @@
 }
 
 .greetings {
-  font-weight: bold;
   position: relative;
 
   &::after {
@@ -33,6 +32,10 @@
     left: 2rem;
     bottom: -2rem;
   }
+}
+
+.underlined {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
