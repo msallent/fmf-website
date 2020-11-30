@@ -1,6 +1,4 @@
 .footer {
-  max-width: 120rem;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,6 +22,7 @@
 .title {
   font-size: 1.2rem;
   letter-spacing: 3px;
+  margin-top: 0.1rem;
 }
 
 .socials {
@@ -56,4 +55,24 @@
 .socialIcon {
   width: 1rem;
   height: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding: 2rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: 2rem 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    max-width: 120rem;
+    padding: 0;
+    margin: 0 auto;
+  }
 }

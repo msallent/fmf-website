@@ -11,4 +11,17 @@
 .titleWrapper {
   max-width: 100rem;
   margin: 0 auto;
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .pageTitle {
+    padding: 0.8rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pageTitle {
+    padding: 0.8rem 4rem;
+  }
 }
