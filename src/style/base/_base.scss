@@ -24,6 +24,10 @@ a {
   color: currentColor;
   display: block;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 button {
