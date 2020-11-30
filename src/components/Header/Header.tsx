@@ -26,7 +26,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, currentLocation 
   return (
     <header className={styles.header}>
       <div className={styles.headerRow}>
-        <Link to="/" className={styles.title}>
+        <Link to="/albums/world-music-album" className={styles.title}>
           {title}
         </Link>
         <button
