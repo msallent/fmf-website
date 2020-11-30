@@ -23,7 +23,6 @@
 .greetings {
   font-weight: bold;
   position: relative;
-  margin-bottom: 8rem;
 
   &::after {
     content: '';
@@ -33,5 +32,42 @@
     position: absolute;
     left: 2rem;
     bottom: -2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .paragraph,
+  .list {
+    padding: 0 3rem;
+  }
+
+  .greetings::after {
+    left: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .paragraph,
+  .list {
+    padding: 0 4rem;
+  }
+
+  .greetings::after {
+    left: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .paragraph,
+  .list {
+    padding: 0;
+  }
+
+  .greetings {
+    margin-bottom: 8rem;
+
+    &::after {
+      left: 0;
+    }
   }
 }
