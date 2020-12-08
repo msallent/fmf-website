@@ -1,18 +1,12 @@
 .bannerWrapper {
-  height: 0;
-  position: relative;
-  overflow: hidden;
-  padding-bottom: 56.25%;
+  height: 25rem;
   margin-top: 2.6rem;
 }
 
 .banner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: 0;
-  bottom: 0;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .paragraph {
@@ -39,10 +33,6 @@
 }
 
 @media (min-width: 768px) {
-  .bannerWrapper {
-    padding-bottom: 33.3%;
-  }
-
   .paragraph,
   .list {
     padding: 0 3rem;
@@ -51,7 +41,7 @@
 
 @media (min-width: 1024px) {
   .bannerWrapper {
-    padding-bottom: 25%;
+    height: 30rem;
   }
 
   .paragraph,
@@ -61,10 +51,6 @@
 }
 
 @media (min-width: 1200px) {
-  .bannerWrapper {
-    padding-bottom: 20%;
-  }
-
   .paragraph,
   .list {
     padding: 0;

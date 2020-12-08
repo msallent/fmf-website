@@ -7,7 +7,7 @@ const Contact: FunctionComponent<PageProps> = () => (
   <main>
     <PageTitle title="Contact" />
     <div className={styles.bannerWrapper}>
-      <img className={styles.banner} src="https://via.placeholder.com/1600x900" alt="Placeholder" />
+      <img className={styles.banner} src="/images/contact.jpg" alt="Contact" />
     </div>
     <div className="container">
       <p className={styles.paragraph}>
