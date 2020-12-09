@@ -19,6 +19,7 @@ interface SiteMetadataQuery {
       description: string;
       keywords: Array<string>;
       imageURI: string;
+      siteUrl: string;
     };
   };
 }
@@ -42,6 +43,7 @@ export const SEO: FunctionComponent<SEOProps> = ({
             description
             keywords
             imageURI
+            siteUrl
           }
         }
       }
@@ -70,7 +72,7 @@ export const SEO: FunctionComponent<SEOProps> = ({
         },
         {
           property: 'og:url',
-          content: location.href,
+          content: `${siteMetadata.siteUrl}${location.pathname}`,
         },
         {
           property: 'og:description',
@@ -82,7 +84,7 @@ export const SEO: FunctionComponent<SEOProps> = ({
         },
         {
           property: 'og:image',
-          content: `${location.origin}${imageURI || siteMetadata.imageURI}`,
+          content: `${siteMetadata.siteUrl}${imageURI || siteMetadata.imageURI}`,
         },
         {
           property: 'og:image:alt',
