@@ -1,0 +1,171 @@
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carouselContent {
+  display: flex;
+}
+
+.slide {
+  position: relative;
+  min-width: 80%;
+  padding: 0 0.5rem;
+  opacity: 0.4;
+  transition: opacity 0.5s;
+}
+
+.playOverlay {
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  bottom: 0;
+  width: calc(100% - 1rem);
+
+  svg {
+    height: auto;
+    width: 10%;
+    fill: #fff;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  &.isActive {
+    svg {
+      opacity: 0.75;
+    }
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: 'Biennale', sans-serif;
+  font-weight: bold;
+  margin: 2rem;
+  position: relative;
+  font-size: 1.6rem;
+
+  &::after {
+    content: '';
+    height: 1px;
+    background-color: #000;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+  }
+}
+
+.description {
+  margin: 2.5rem 2rem 2rem 2rem;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+.audioPlayer {
+  display: none;
+}
+
+.trackList {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .slide {
+    min-width: 50%;
+    padding: 0 1rem;
+  }
+
+  .title {
+    margin: 2rem 3rem;
+  }
+
+  .description {
+    margin: 2.5rem 3rem 2rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentWrapper {
+    flex-direction: row;
+    margin: 4rem;
+  }
+
+  .carousel {
+    flex: 4 0;
+    margin-right: 4rem;
+  }
+
+  .content {
+    flex: 6 0;
+  }
+
+  .slide {
+    min-width: 100%;
+    padding: 0;
+  }
+
+  .playOverlay {
+    display: none;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .description {
+    margin: 2.5rem 0 0 0;
+  }
+
+  .audioPlayer {
+    display: block;
+    width: 100%;
+    margin-top: 2.5rem;
+  }
+
+  .trackList {
+    display: block;
+    margin: 2rem 6rem;
+  }
+
+  .track {
+    position: relative;
+    font-size: 1.4rem;
+
+    button {
+      font-weight: bold;
+      color: #777;
+      outline: none;
+    }
+
+    &.isActive {
+      button {
+        color: #000;
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+
+    &::after {
+      content: '';
+      height: 1px;
+      background-color: #ddd;
+      position: absolute;
+      bottom: -0.7rem;
+      left: -3rem;
+      right: -3rem;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .contentWrapper {
+    margin: 4rem auto;
+  }
+}
