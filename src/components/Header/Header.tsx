@@ -13,6 +13,11 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, currentLocation 
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  const setPageTitle = () => {
+    const splitTitle = title.split(' ');
+    return `<strong>${splitTitle[0]}</strong> ${splitTitle[1]} ${splitTitle[2]}`;
+  };
+
   const toggleNavbarState = () => {
     if (isTransitioning) return;
     setIsNavbarOpen(!isNavbarOpen);
@@ -26,9 +31,11 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, currentLocation 
   return (
     <header className={styles.header}>
       <div className={styles.headerRow}>
-        <Link to="/albums/world-music-album" className={styles.title}>
-          {title}
-        </Link>
+        <Link
+          to="/albums/world-music-album"
+          className={styles.title}
+          dangerouslySetInnerHTML={{ __html: setPageTitle() }}
+        />
         <button
           className={classNames(styles.navbarToggle, isNavbarOpen && styles.isOpen)}
           type="button"
