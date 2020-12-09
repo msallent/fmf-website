@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import ReactAudioPlayer from 'react-audio-player';
 import { ReactComponent as PlayButton } from '../../assets/svg/play.svg';
 import { ReactComponent as PauseButton } from '../../assets/svg/pause.svg';
+import { ReactComponent as RewindButton } from '../../assets/svg/rewind.svg';
+import { ReactComponent as FastForwardButton } from '../../assets/svg/fast-forward.svg';
 import { PageTitle } from '../../components/PageTitle';
 import { worldMusicAlbum } from '../../data/albums';
 import styles from '../../style/pages/albums/world-music-album.module.scss';
@@ -16,19 +18,31 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
   const audioPlayerRef = useRef<ReactAudioPlayer>(null);
 
-  const playTrack = () => {
+  const handleTrackControls = (action: 'play' | 'rewind' | 'fastforward') => {
     if (!audioPlayerRef.current || !audioPlayerRef.current.audioEl.current) return;
 
     const audioElement = audioPlayerRef.current.audioEl.current;
 
     const isPlaying = !audioElement.paused;
 
-    if (isPlaying) {
-      audioElement.pause();
-      setIsAudioPlaying(false);
-    } else {
-      audioElement.play();
-      setIsAudioPlaying(true);
+    switch (action) {
+      case 'play':
+        if (isPlaying) {
+          audioElement.pause();
+          setIsAudioPlaying(false);
+        } else {
+          audioElement.play();
+          setIsAudioPlaying(true);
+        }
+        break;
+      case 'rewind':
+        audioElement.currentTime -= 10;
+        break;
+      case 'fastforward':
+        audioElement.currentTime += 10;
+        break;
+      default:
+        break;
     }
   };
 
@@ -48,6 +62,23 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
     };
   }, [emblaAPI]);
 
+  useEffect(() => {
+    if (!audioPlayerRef.current || !audioPlayerRef.current.audioEl.current) return;
+
+    const audioElement = audioPlayerRef.current.audioEl.current;
+
+    const onEnded = () => {
+      setIsAudioPlaying(false);
+    };
+
+    audioElement.addEventListener('ended', onEnded);
+
+    // eslint-disable-next-line consistent-return
+    return () => {
+      audioElement.removeEventListener('ended', onEnded);
+    };
+  }, []);
+
   return (
     <main>
       <PageTitle title="World Music Album" />
@@ -56,16 +87,34 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
           <ul className={styles.carouselContent}>
             {worldMusicAlbum.map((track, index) => (
               <li className={styles.slide} key={track.title}>
-                <button
+                <div
                   className={classNames(
-                    styles.playOverlay,
+                    styles.buttonsOverlay,
                     activeSlideIndex === index && styles.isActive
                   )}
-                  type="button"
-                  onClick={playTrack}
                 >
-                  {isAudioPlaying ? <PauseButton /> : <PlayButton />}
-                </button>
+                  <button
+                    className={styles.controlButton}
+                    type="button"
+                    onClick={() => handleTrackControls('rewind')}
+                  >
+                    <RewindButton />
+                  </button>
+                  <button
+                    className={styles.controlButton}
+                    type="button"
+                    onClick={() => handleTrackControls('play')}
+                  >
+                    {isAudioPlaying ? <PauseButton /> : <PlayButton />}
+                  </button>
+                  <button
+                    className={styles.controlButton}
+                    type="button"
+                    onClick={() => handleTrackControls('fastforward')}
+                  >
+                    <FastForwardButton />
+                  </button>
+                </div>
                 <img src={track.artwork} alt={track.title} />
               </li>
             ))}
