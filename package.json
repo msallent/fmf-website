@@ -33,6 +33,7 @@
     "gsap": "^3.5.1",
     "normalize.css": "8.0.1",
     "react": "17.0.1",
+    "react-audio-player": "^0.14.0",
     "react-dom": "17.0.1",
     "react-helmet": "6.1.0"
   },
