@@ -18,9 +18,11 @@ module.exports = {
     },
   },
   rules: {
+    'consistent-return': 0,
     'import/extensions': [2, { ts: 'never', tsx: 'never' }],
     'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
+    'jsx-a11y/media-has-caption': 0,
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-props-no-spreading': 0,

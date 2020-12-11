@@ -56,7 +56,6 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
     emblaAPI.on('select', onSelect);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       emblaAPI.off('select', onSelect);
     };
@@ -73,7 +72,6 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
     audioElement.addEventListener('ended', onEnded);
 
-    // eslint-disable-next-line consistent-return
     return () => {
       audioElement.removeEventListener('ended', onEnded);
     };
