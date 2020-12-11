@@ -11,6 +11,14 @@ const Work: FunctionComponent<PageProps> = () => {
   const videoOverlayRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
 
+  const closeVideo = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+
+    if (target.tagName !== 'VIDEO') {
+      setActiveOverlayIndex(-1);
+    }
+  };
+
   useEffect(() => {
     const activeOverlay = videoOverlayRefs.current[activeOverlayIndex];
     const activeVideo = videoRefs.current[activeOverlayIndex];
@@ -20,9 +28,6 @@ const Work: FunctionComponent<PageProps> = () => {
     gsap.to(activeOverlay, {
       autoAlpha: 1,
       duration: 0.35,
-      onComplete: () => {
-        activeVideo.play();
-      },
     });
 
     return () => {
@@ -50,7 +55,7 @@ const Work: FunctionComponent<PageProps> = () => {
               <button
                 className={styles.videoOverlay}
                 type="button"
-                onClick={() => setActiveOverlayIndex(-1)}
+                onClick={closeVideo}
                 ref={(el) => {
                   videoOverlayRefs.current[index] = el;
                 }}
