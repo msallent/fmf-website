@@ -56,7 +56,7 @@ export const SEO: FunctionComponent<SEOProps> = ({
       defaultTitle={siteMetadata.title}
       titleTemplate={`${siteMetadata.title} - %s`}
       htmlAttributes={{ lang: language }}
-      link={[{ rel: 'icon', type: 'image/ico', href: favicon }]}
+      // link={[{ rel: 'icon', type: 'image/ico', href: favicon }]}
       meta={[
         {
           name: 'description',
