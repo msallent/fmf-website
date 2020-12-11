@@ -58,6 +58,7 @@ const Work: FunctionComponent<PageProps> = () => {
                 <video
                   className={styles.video}
                   preload="metadata"
+                  playsInline
                   controls
                   ref={(el) => {
                     videoRefs.current[index] = el;
