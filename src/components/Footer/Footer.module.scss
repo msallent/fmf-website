@@ -42,6 +42,11 @@
   &:not(:last-child) {
     margin-right: 0.5rem;
   }
+
+  &:hover {
+    color: green;
+    border-color: green;
+  }
 }
 
 .socialIconWrapper {
