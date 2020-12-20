@@ -5,8 +5,6 @@ import classNames from 'classnames';
 import ReactAudioPlayer from 'react-audio-player';
 import { ReactComponent as PlayButton } from '../../assets/svg/play.svg';
 import { ReactComponent as PauseButton } from '../../assets/svg/pause.svg';
-import { ReactComponent as RewindButton } from '../../assets/svg/rewind.svg';
-import { ReactComponent as FastForwardButton } from '../../assets/svg/fast-forward.svg';
 import { PageTitle } from '../../components/PageTitle';
 import { worldMusicAlbum } from '../../data/albums';
 import styles from '../../style/pages/albums/world-music-album.module.scss';
@@ -18,31 +16,19 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
   const audioPlayerRef = useRef<ReactAudioPlayer>(null);
 
-  const handleTrackControls = (action: 'play' | 'rewind' | 'fastforward') => {
+  const playOrPauseAudio = () => {
     if (!audioPlayerRef.current || !audioPlayerRef.current.audioEl.current) return;
 
     const audioElement = audioPlayerRef.current.audioEl.current;
 
     const isPlaying = !audioElement.paused;
 
-    switch (action) {
-      case 'play':
-        if (isPlaying) {
-          audioElement.pause();
-          setIsAudioPlaying(false);
-        } else {
-          audioElement.play();
-          setIsAudioPlaying(true);
-        }
-        break;
-      case 'rewind':
-        audioElement.currentTime -= 10;
-        break;
-      case 'fastforward':
-        audioElement.currentTime += 10;
-        break;
-      default:
-        break;
+    if (isPlaying) {
+      audioElement.pause();
+      setIsAudioPlaying(false);
+    } else {
+      audioElement.play();
+      setIsAudioPlaying(true);
     }
   };
 
@@ -51,7 +37,9 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
     const onSelect = () => {
       setActiveSlideIndex(emblaAPI.selectedScrollSnap);
-      setIsAudioPlaying(false);
+      setTimeout(() => {
+        playOrPauseAudio();
+      }, 0);
     };
 
     emblaAPI.on('select', onSelect);
@@ -91,26 +79,8 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
                     activeSlideIndex === index && styles.isActive
                   )}
                 >
-                  <button
-                    className={styles.controlButton}
-                    type="button"
-                    onClick={() => handleTrackControls('rewind')}
-                  >
-                    <RewindButton />
-                  </button>
-                  <button
-                    className={styles.controlButton}
-                    type="button"
-                    onClick={() => handleTrackControls('play')}
-                  >
+                  <button className={styles.controlButton} type="button" onClick={playOrPauseAudio}>
                     {isAudioPlaying ? <PauseButton /> : <PlayButton />}
-                  </button>
-                  <button
-                    className={styles.controlButton}
-                    type="button"
-                    onClick={() => handleTrackControls('fastforward')}
-                  >
-                    <FastForwardButton />
                   </button>
                 </div>
                 <img src={track.artwork} alt={track.title} />
