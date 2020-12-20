@@ -19,8 +19,7 @@ const Contact: FunctionComponent<PageProps> = () => (
         <li className={styles.listItem}>Sound Design</li>
         <li className={styles.listItem}>Mixing & Mastering</li>
       </ul>
-      <p className={styles.paragraph}>federicomarianofranco@gmail.com</p>
-      <p className={styles.paragraph}>+54 9 11 6896 9873</p>
+      <p className={styles.paragraph}>fmfcreativeaudio@gmail.com</p>
     </div>
   </main>
 );
