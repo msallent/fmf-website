@@ -10,7 +10,7 @@ interface Social {
 export const socials: Array<Social> = [
   {
     title: 'Instagram',
-    href: 'https://instagram.com',
+    href: 'https://instagram.com/fmf.creative.audio',
     Component: Instagram,
   },
 ];
