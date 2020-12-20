@@ -27,10 +27,11 @@ const About: FunctionComponent<PageProps> = () => (
           <Link to="/albums/world-music-album" className={styles.underlined}>
             Albums
           </Link>{' '}
-          section and don&apos;t hesitate to contact me.
-        </p>
-        <p className={classNames(styles.paragraph, styles.greetings)}>
-          <strong>Say hi!</strong>
+          section and don&apos;t hesitate to{' '}
+          <Link to="/contact" className={styles.underlined}>
+            contact me
+          </Link>
+          .
         </p>
       </div>
     </div>

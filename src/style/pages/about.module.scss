@@ -32,20 +32,6 @@
   }
 }
 
-.greetings {
-  position: relative;
-
-  &::after {
-    content: '';
-    width: 8rem;
-    height: 0.2rem;
-    background-color: red;
-    position: absolute;
-    left: 2rem;
-    bottom: -2rem;
-  }
-}
-
 .underlined {
   text-decoration: underline;
 }
@@ -90,20 +76,8 @@
 }
 
 @media (min-width: 1200px) {
-  .portrait {
-    margin-bottom: 8rem;
-  }
-
   .paragraph,
   .list {
     padding: 0;
-  }
-
-  .greetings {
-    margin-bottom: 8rem;
-
-    &::after {
-      left: 0;
-    }
   }
 }
