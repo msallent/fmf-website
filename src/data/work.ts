@@ -18,7 +18,7 @@ export const workItems: Array<WorkItem> = [
   },
   {
     title: 'Wabi',
-    artwork: '/images/work/wabi/artwork.png',
+    artwork: '/images/work/wabi/artwork.jpg',
     video: {
       desktop: '/video/work/wabi/video.mp4',
     },
