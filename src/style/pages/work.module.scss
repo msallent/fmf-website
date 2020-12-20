@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 3px 3px 10px 1px #aaa;
 
   button {
     outline: none;
@@ -46,6 +47,22 @@
     row-gap: 4rem;
     column-gap: 4rem;
     margin: 4rem;
+  }
+
+  .workItem {
+    overflow: hidden;
+
+    button {
+      img {
+        transition: 0.25s;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
 }
 
