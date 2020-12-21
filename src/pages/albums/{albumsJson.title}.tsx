@@ -44,8 +44,15 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
       audioElement.pause();
       setIsAudioPlaying(false);
     } else {
-      audioElement.play();
-      setIsAudioPlaying(true);
+      const playPromise = audioElement.play();
+
+      playPromise
+        .then(() => {
+          setIsAudioPlaying(true);
+        })
+        .catch(() => {
+          setIsAudioPlaying(false);
+        });
     }
   };
 
