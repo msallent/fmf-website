@@ -31,6 +31,8 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
 
   const audioPlayerRef = useRef<ReactAudioPlayer>(null);
 
+  const allTracks = tracks.length <= 2 ? [...tracks, ...tracks] : tracks;
+
   const playOrPauseAudio = () => {
     if (!audioPlayerRef.current || !audioPlayerRef.current.audioEl.current) return;
 
@@ -86,8 +88,9 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
       <div className={classNames('container', styles.contentWrapper)}>
         <div className={styles.carousel} ref={emblaRef}>
           <ul className={styles.carouselContent}>
-            {tracks.map((track, index) => (
-              <li className={styles.slide} key={track.title}>
+            {allTracks.map((track, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li className={styles.slide} key={`${track.title}-${index}`}>
                 <div
                   className={classNames(
                     styles.buttonsOverlay,
@@ -104,11 +107,11 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
           </ul>
         </div>
         <div className={styles.content}>
-          <h3 className={styles.title}>{tracks[activeSlideIndex].title}</h3>
-          <p className={styles.description}>{tracks[activeSlideIndex].description}</p>
+          <h3 className={styles.title}>{allTracks[activeSlideIndex].title}</h3>
+          <p className={styles.description}>{allTracks[activeSlideIndex].description}</p>
           <ReactAudioPlayer
             className={styles.audioPlayer}
-            src={tracks[activeSlideIndex].audioFile}
+            src={allTracks[activeSlideIndex].audioFile}
             ref={audioPlayerRef}
             controlsList="nodownload"
             controls
@@ -116,7 +119,10 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
           <ul className={styles.trackList}>
             {tracks.map((track, index) => (
               <li
-                className={classNames(styles.track, activeSlideIndex === index && styles.isActive)}
+                className={classNames(
+                  styles.track,
+                  activeSlideIndex % 2 === index && styles.isActive
+                )}
                 key={track.title}
               >
                 <button type="button" onClick={() => emblaAPI?.scrollTo(index)}>
