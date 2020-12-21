@@ -36,10 +36,11 @@ const gatsbyConfig: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: resolve(__dirname, '../assets'),
-        name: 'assets',
+        path: resolve(__dirname, '../data/albums/'),
+        name: 'albums',
       },
     },
+    'gatsby-transformer-json',
     'gatsby-transformer-sharp',
     'gatsby-plugin-netlify',
   ],
