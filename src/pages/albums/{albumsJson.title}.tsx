@@ -128,7 +128,9 @@ const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
               <li
                 className={classNames(
                   styles.track,
-                  activeSlideIndex % 2 === index && styles.isActive
+                  tracks.length <= 2
+                    ? activeSlideIndex % 2 === index && styles.isActive
+                    : activeSlideIndex === index && styles.isActive
                 )}
                 key={track.title}
               >
