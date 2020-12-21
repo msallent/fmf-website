@@ -1,0 +1,17 @@
+{
+  "title": "Colorful Music",
+  "tracks": [
+    {
+      "title": "Modern",
+      "artwork": "/images/albums/colorful-music/modern.jpg",
+      "description": "Song composition inspired by modern leads and tone color.",
+      "audioFile": "/audio/albums/colorful-music/modern.mp3"
+    },
+    {
+      "title": "Fun",
+      "artwork": "/images/albums/colorful-music/fun.jpg",
+      "description": "Inspired by overblown brasses. Song composition with a modern fusion production approach.",
+      "audioFile": "/audio/albums/colorful-music/fun.mp3"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Chill Music",
+  "tracks": [
+    {
+      "title": "Break",
+      "artwork": "/images/albums/chill-music/break.jpg",
+      "description": "Piano composition mixed with a modern beat.",
+      "audioFile": "/audio/albums/chill-music/break.mp3"
+    },
+    {
+      "title": "Love",
+      "artwork": "/images/albums/chill-music/love.jpg",
+      "description": "Song composition inspired by sweet harmonies and arpeggios.",
+      "audioFile": "/audio/albums/chill-music/love.mp3"
+    }
+  ]
+}

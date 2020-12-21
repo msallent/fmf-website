@@ -1,0 +1,17 @@
+{
+  "title": "Audio Logo",
+  "tracks": [
+    {
+      "title": "Start",
+      "artwork": "/images/albums/audio-logo/start.jpg",
+      "description": "Song composition inspired by start-up sounds from softwares and electronic devices.",
+      "audioFile": "/audio/albums/audio-logo/start.mp3"
+    },
+    {
+      "title": "Pop",
+      "artwork": "/images/albums/audio-logo/pop.jpg",
+      "description": "Song composition inspired by pop culture image.",
+      "audioFile": "/audio/albums/audio-logo/pop.mp3"
+    }
+  ]
+}

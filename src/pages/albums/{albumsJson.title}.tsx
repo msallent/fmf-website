@@ -1,15 +1,30 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import classNames from 'classnames';
 import ReactAudioPlayer from 'react-audio-player';
 import { ReactComponent as PlayButton } from '../../assets/svg/play.svg';
 import { ReactComponent as PauseButton } from '../../assets/svg/pause.svg';
 import { PageTitle } from '../../components/PageTitle';
-import { worldMusicAlbum } from '../../data/albums';
 import styles from '../../style/pages/albums/world-music-album.module.scss';
 
-const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
+interface AlbumPageData {
+  albumsJson: {
+    title: string;
+    tracks: Array<{
+      title: string;
+      description: string;
+      artwork: string;
+      audioFile: string;
+    }>;
+  };
+}
+
+const WorldMusicAlbum: FunctionComponent<PageProps<AlbumPageData>> = ({
+  data: {
+    albumsJson: { title, tracks },
+  },
+}) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [emblaRef, emblaAPI] = useEmblaCarousel({ loop: true, inViewThreshold: 1 });
@@ -67,11 +82,11 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
 
   return (
     <main>
-      <PageTitle title="World Music Album" />
+      <PageTitle title={title} />
       <div className={classNames('container', styles.contentWrapper)}>
         <div className={styles.carousel} ref={emblaRef}>
           <ul className={styles.carouselContent}>
-            {worldMusicAlbum.map((track, index) => (
+            {tracks.map((track, index) => (
               <li className={styles.slide} key={track.title}>
                 <div
                   className={classNames(
@@ -89,17 +104,17 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
           </ul>
         </div>
         <div className={styles.content}>
-          <h3 className={styles.title}>{worldMusicAlbum[activeSlideIndex].title}</h3>
-          <p className={styles.description}>{worldMusicAlbum[activeSlideIndex].description}</p>
+          <h3 className={styles.title}>{tracks[activeSlideIndex].title}</h3>
+          <p className={styles.description}>{tracks[activeSlideIndex].description}</p>
           <ReactAudioPlayer
             className={styles.audioPlayer}
-            src={worldMusicAlbum[activeSlideIndex].audioFile}
+            src={tracks[activeSlideIndex].audioFile}
             ref={audioPlayerRef}
             controlsList="nodownload"
             controls
           />
           <ul className={styles.trackList}>
-            {worldMusicAlbum.map((track, index) => (
+            {tracks.map((track, index) => (
               <li
                 className={classNames(styles.track, activeSlideIndex === index && styles.isActive)}
                 key={track.title}
@@ -115,5 +130,19 @@ const WorldMusicAlbum: FunctionComponent<PageProps> = () => {
     </main>
   );
 };
+
+export const query = graphql`
+  query AlbumQuery($id: String!) {
+    albumsJson(id: { eq: $id }) {
+      title
+      tracks {
+        title
+        artwork
+        description
+        audioFile
+      }
+    }
+  }
+`;
 
 export default WorldMusicAlbum;

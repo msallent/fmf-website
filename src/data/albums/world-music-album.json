@@ -1,0 +1,53 @@
+{
+  "title": "World Music Album",
+  "tracks": [
+    {
+      "title": "Lost & Sand",
+      "artwork": "/images/albums/world-music-album/lost-&-sand.jpg",
+      "description": "Inspired by traditional flamenco. Song composition with a modern fusion production approach. Special thanks to Leopoldo Delorenzi.",
+      "audioFile": "/audio/albums/world-music-album/lost-&-sand.mp3"
+    },
+    {
+      "title": "Dynasty",
+      "artwork": "/images/albums/world-music-album/dynasty.jpg",
+      "description": "Inspired by traditional Indian music. Song composition with a modern fusion production approach. Special thanks to Sergio Bulgakov.",
+      "audioFile": "/audio/albums/world-music-album/dynasty.mp3"
+    },
+    {
+      "title": "Pause",
+      "artwork": "/images/albums/world-music-album/pause.jpg",
+      "description": "Song composition inspired by Bossa Nova harmonies, Hawaiian instruments and tone color.",
+      "audioFile": "/audio/albums/world-music-album/pause.mp3"
+    },
+    {
+      "title": "Rum",
+      "artwork": "/images/albums/world-music-album/rum.jpg",
+      "description": "Inspired by Salsa harmonies. Song composition with a modern fusion production approach.",
+      "audioFile": "/audio/albums/world-music-album/rum.mp3"
+    },
+    {
+      "title": "Monomyth",
+      "artwork": "/images/albums/world-music-album/monomyth.jpg",
+      "description": "Inspired by ancient music. Primarily recorded using low sustain instruments. Song composition with a modern fusion production approach.",
+      "audioFile": "/audio/albums/world-music-album/monomyth.mp3"
+    },
+    {
+      "title": "Voodoo",
+      "artwork": "/images/albums/world-music-album/voodoo.jpg",
+      "description": "Inspired by tribal rhythms. Song composition with a modern fusion production approach.",
+      "audioFile": "/audio/albums/world-music-album/voodoo.mp3"
+    },
+    {
+      "title": "American Soil",
+      "artwork": "/images/albums/world-music-album/american-soil.jpg",
+      "description": "Song composition inspired by traditional Folk harmonies, rhythms and tone color.",
+      "audioFile": "/audio/albums/world-music-album/american-soil.mp3"
+    },
+    {
+      "title": "Exotica",
+      "artwork": "/images/albums/world-music-album/exotica.jpg",
+      "description": "Song composition inspired by exotic harmonies and soundscapes.",
+      "audioFile": "/audio/albums/world-music-album/exotica.mp3"
+    }
+  ]
+}
