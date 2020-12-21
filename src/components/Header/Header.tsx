@@ -32,7 +32,7 @@ export const Header: FunctionComponent<HeaderProps> = ({ title, currentLocation 
     <header className={styles.header}>
       <div className={styles.headerRow}>
         <Link
-          to="/albums/world-music-album"
+          to="/work"
           className={styles.title}
           dangerouslySetInnerHTML={{ __html: setPageTitle() }}
         />

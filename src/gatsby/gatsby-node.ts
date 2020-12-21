@@ -9,7 +9,7 @@ import { GatsbyNode } from 'gatsby';
 export const createPages: GatsbyNode['createPages'] = ({ actions: { createRedirect } }) => {
   createRedirect({
     fromPath: '/',
-    toPath: '/albums/world-music-album',
+    toPath: '/work',
     isPermanent: true,
   });
 };
