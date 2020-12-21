@@ -17,7 +17,7 @@ const gatsbyConfig: GatsbyConfig = {
     description: 'Federico Mariano Franco - Creative Audio Producer',
     keywords: ['federico', 'mariano', 'franco', 'creative', 'audio', 'producer'],
     imageURI: '/images/share.jpg',
-    siteUrl: 'https://fmf-creative-audio.netlify.app/',
+    siteUrl: 'https://fmfcreativeaudio.com/',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
