@@ -76,7 +76,6 @@
   .navbarItem {
     font-weight: bold;
     color: #777;
-    padding: 2rem 0;
 
     &.active {
       color: #000;
@@ -95,6 +94,10 @@
   .subLinkItem {
     margin-top: 0;
 
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+
     .navbarItem {
       font-family: 'TTHoves Medium', sans-serif;
       font-weight: normal;
@@ -112,7 +115,7 @@
     top: 5rem;
     left: -1rem;
     width: 20rem;
-    padding: 0 1rem;
+    padding: 1rem;
     height: auto;
     opacity: 0;
     visibility: hidden;

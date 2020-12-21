@@ -5,17 +5,38 @@ interface NavbarLink {
 }
 
 export const navbarLinks: Array<NavbarLink> = [
-  { title: 'Work', href: '/work' },
+  {
+    title: 'Work',
+    href: '/work',
+  },
   {
     title: 'Albums',
     href: '/albums',
     subLinks: [
+      {
+        title: 'Audio Logo',
+        href: '/audio-logo',
+      },
+      {
+        title: 'Chill Music',
+        href: '/chill-music',
+      },
+      {
+        title: 'Colorful Music',
+        href: '/colorful-music',
+      },
       {
         title: 'World Music Album',
         href: '/world-music-album',
       },
     ],
   },
-  { title: 'About', href: '/about' },
-  { title: 'Contact', href: '/contact' },
+  {
+    title: 'About',
+    href: '/about',
+  },
+  {
+    title: 'Contact',
+    href: '/contact',
+  },
 ];
